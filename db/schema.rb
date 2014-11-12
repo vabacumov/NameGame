@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111231344) do
+ActiveRecord::Schema.define(version: 20141112000319) do
+
+  create_table "connections", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "connection_id"
+    t.integer  "times_seen_connection"
+    t.integer  "correct_guesses"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "people", force: true do |t|
     t.integer  "linkedin_id"
@@ -19,6 +28,20 @@ ActiveRecord::Schema.define(version: 20141111231344) do
     t.string   "last_name"
     t.string   "company"
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pictures", force: true do |t|
+    t.string  "url"
+    t.boolean "is_valid"
+    t.integer "user_id"
+  end
+
+  create_table "total_scores", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "total_guesses"
+    t.integer  "correct_guesses"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
