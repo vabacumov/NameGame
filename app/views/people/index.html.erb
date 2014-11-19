@@ -1,0 +1,17 @@
+<h1>Name Game</h1>
+<!-- <form action="">
+  First name: <input type="text" name="fname"><br>
+  Last name: <input type="text" name="lname"><br>
+  <input type="submit" value="Submit">
+</form> -->
+<div>
+  <%= form_for(@person) do |p| %>
+    <%= p.label :first_name %>
+    <%= p.text_field :first_name %>
+
+    <%= p.label :last_name %>
+    <%= p.text_field :last_name %>
+
+    <%= p.submit "Create" %>
+  <% end %>
+</div>
