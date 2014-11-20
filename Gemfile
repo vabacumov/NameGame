@@ -28,6 +28,12 @@ group :development, :test, :production do
   gem 'pg'
 end
 
+gem 'httparty'
+
+gem 'factory_girl'
+
+gem 'faker'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

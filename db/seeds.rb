@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+User.destroy_all
+
+3.times do
+  User.create(linkedin_id: rand(0..100), first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, company: Faker::Company.name, email: Faker::Internet.email)
+end
