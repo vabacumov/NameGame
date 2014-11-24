@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @my_data = HTTParty.get('https://www.linkedin.com/uas/oauth2/authorization?response_type=code
+                                           &client_id=7587p5dfsq745m                                           
+                                           &state=EBEEFWF45453sdffef424
+                                           &redirect_uri=https://serene-fortress-3078.herokuapp.com/')
   end
 
   # GET /users/1
