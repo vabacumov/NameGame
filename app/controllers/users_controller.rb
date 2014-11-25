@@ -5,10 +5,21 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    @my_data = HTTParty.get('https://www.linkedin.com/uas/oauth2/authorization?response_type=code
-                                           &client_id=7587p5dfsq745m                                           
-                                           &state=EBEEFWF45453sdffef424
-                                           &redirect_uri=https://serene-fortress-3078.herokuapp.com/')
+    @code = params[:code]
+    @state = params[:state]
+    options = {
+      body: {
+        grant_type: 'authorization_code',
+        code: params[:code],
+        redirect_uri: 'http://localhost:3000/users',
+        client_id: '75a0miyfrg2jok',
+        client_secret: '8vOv94rBfjQdGQJf'
+      }
+    }
+    @linked_in_response = HTTParty.post("https://www.linkedin.com/uas/oauth2/accessToken", options)
+    @token = @linked_in_response['access_token']
+    @info = HTTParty.get("https://api.linkedin.com/v1/people/~/picture-url/?oauth2_access_token=#{@token}")
+
   end
 
   # GET /users/1
